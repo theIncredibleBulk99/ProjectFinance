@@ -67,6 +67,7 @@ class TransactionController extends Controller
             $transact
         ]);
     }
+    //===========================================================================================================================
     public function postTransactionApi(Request $request){
         $response = Http::post('https:LINK E NGKO', [
             'nama_transaksi' => $request->nama_transaksi,
@@ -82,5 +83,35 @@ class TransactionController extends Controller
     }
     public function inputData(){
 return view('postData.blade.php');
+    }
+    public function getAllApi(Request $request){
+        $response = Http::get('link e ngko', [
+            'nama_transaksi'=> $request->nama_transaksi,
+            'tanggal_transaksi'=> $request->tanggal_transaksi,
+            'jumlah_transaksi'=> $request->jumlah_transaksi,
+            'jenis_transaksi'=> $request->jenis_transaksi
+        ]);
+        return view('showAll',compact('response'));
+    }
+    public function getMonthlynApi(Request $request){
+        $response = Http::get('link e ko', [
+            'nama_transaksi'=> $request->nama_transaksi,
+            'tanggal_transaksi'=> $request->tanggal_transaksi,
+            'jumlah_transaksi'=> $request->jumlah_transaksi
+        ]);
+        return view('showAll',compact('response'));
+    }
+
+    public function getOneApi(Request $request){
+        $response = Http::get('link e ko', [
+            'nama_transaksi'=> $request->nama_transaksi,
+            'tanggal_transaksi'=> $request->tanggal_transaksi,
+            'jumlah_transaksi'=> $request->jumlah_transaksi,
+            'jenis_transaksi'=> $request->jenis_transaksi,
+            'catatan'=> $request->catatan,
+            'bukti'=> $request->bukti_transaksi,
+            'pihak_terlibat' => $request->pihak_terlibat
+        ]);
+        return view('showAll',compact('response'));
     }
 }
