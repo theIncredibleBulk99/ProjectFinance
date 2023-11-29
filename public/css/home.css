@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
+.navbar-nav li{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 a {
     color: white;
     font-family: 'Montserrat';
-    padding : 10px;
+    font-size: 15px;
 }

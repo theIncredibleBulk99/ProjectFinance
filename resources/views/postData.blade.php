@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form to API</title>
-</head>
-<body>
+@extends('template')
+
+@section('content')
+    <!-- Your view content goes here -->
     <form action="{{ route('postTransaction') }}" method="post">
         @csrf
 
@@ -42,6 +38,4 @@
 
         <button type="submit">Submit</button>
     </form>
-    {{-- <button href = "{{ route('getOne') }}">KONTOL</button> --}}
-</body>
-</html>
+@endsection
