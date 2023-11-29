@@ -4,10 +4,7 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\AnalyticsController;
-<<<<<<< HEAD
-=======
 use App\Http\Controllers\nggejson;
->>>>>>> 38bcd0ce88ebdf6801661d0e424b7a8e8ee37bb5
 use ArielMejiaDev\LarapexCharts\Facades\LarapexChart;
 use Illuminate\Support\Facades\Route;
 
