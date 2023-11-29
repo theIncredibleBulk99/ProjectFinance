@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+p {
+    font-family: 'DM Serif Display';
+    font-size: 20px;
+}
+
+h1 {
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 60px;
+}
+
+.form-button {
+    font-family: 'Montserrat';
+    font-weight: 600;
+    height: 46px;
+    width: 171px;
+    border-radius: 8px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.login {
+    background-color: white;
+    color: black;
+    transition-duration: 0.3s;
+}
+
+.login:hover {
+    height: 60px;
+    width: 190px;
+}
+
+.register {
+    background-color: black;
+    color: white;
+    transition-duration: 0.3s;
+}
+
+.register:hover {
+    height: 60px;
+    width: 190px;
+}
+
+.forms {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.elements {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 140px;
+}

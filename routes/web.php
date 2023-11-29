@@ -4,6 +4,8 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\AnalyticsController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\nggejson;
 use ArielMejiaDev\LarapexCharts\Facades\LarapexChart;
 use Illuminate\Support\Facades\Route;
@@ -19,26 +21,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function() {
+    return view('welcome');
+});
+
 Route::get('/home', [HomeController::class, 'index'])->name('home.show');
 Route::get('/history', [HistoryController::class, 'index'])->name('history.show');
 Route::get('/analytics', [AnalyticsController::class, 'index'])->name('analytics.show');
-
-Route::get('chart', function () {
-    $chart = (new LarapexChart)::setType('line')
-        ->setTitle('Summary.')
-        ->setSubtitle('Income vs Expenses.')
-        ->setDataset([
-            [
-                'data' => [40, 93, 35, 42, 18, 82, 100]
-            ],
-            [
-                'data' => [50, 43, 75, 41, 38, 52, 90]
-            ]
-        ])
-        ->setXAxis(['January', 'February', 'March', 'April', 'May', 'June', 'July'])
-        ->setColors(['#ffc73c', '#f5746f']);
-    return view('chart', compact('chart'));
-});
 
 Route::middleware(['web'])->group(function () {
     Route::post('/postTransaction', [TransactionController::class, 'createTransaction'])->name('postTransaction');
