@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
+    <title>Analytics Dashboard</title>
     <link rel="stylesheet" href="{{ URL::asset('css/home.css'); }} ">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
     {{-- NAVBAR --}}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <img src="https://seeklogo.com/images/F/finance-logo-6277C6570C-seeklogo.com.png" class="rounded-circle" style="width: 30px; height: 30px; margin-left: 10px;"></a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('home.show') }}">Home</a>
             </li>
@@ -38,18 +41,44 @@
     {{-- NAVBAR --}}
 
     <p>Analytics Dashboard</p>
-
+    <br><br>
     <div class="container-fluid">
         <div class="d-flex justify-content-center align-items-center">
-            <div class="graph p-6 bg-white rounded shadow" style="max-width: 1915px; width: 100%;">
-                {!! $chart->container() !!}
+            <div class="bg-white rounded shadow" style="max-width: 1915px; width: 100%;">
+                {!! $line_chart->container() !!}
             </div>
         </div>
     </div>
+    <br><br>
+    <div class="container-fluid">
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="bg-white rounded shadow" style="max-width: 1915px; width: 100%;">
+                {!! $donut_chart->container() !!}
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div class="container-fluid">
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="bg-white rounded shadow" style="max-width: 1915px; width: 100%;">
+                {!! $bar_chart->container() !!}
+            </div>
+        </div>
+    </div>
+    <br><br>
 
-    <script src="{{ $chart->cdn() }}"></script>
 
-    {{ $chart->script() }}
+    <script src="{{ $line_chart->cdn() }}"></script>
+
+    {{ $line_chart->script() }}
+
+    <script src="{{ $donut_chart->cdn() }}"></script>
+
+    {{ $donut_chart->script() }}
+
+    <script src="{{ $bar_chart->cdn() }}"></script>
+
+    {{ $bar_chart->script() }}
     
      <!-- Include Bootstrap JS and other scripts -->
      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

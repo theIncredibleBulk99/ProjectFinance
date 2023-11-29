@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
+    <title>Transaction History</title>
     <link rel="stylesheet" href="{{ URL::asset('css/home.css'); }} ">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
     {{-- NAVBAR --}}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <img src="https://seeklogo.com/images/F/finance-logo-6277C6570C-seeklogo.com.png" class="rounded-circle" style="width: 30px; height: 30px; margin-left: 10px;"></a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('home.show') }}">Home</a>
             </li>
@@ -42,38 +45,40 @@
 @if(isset($message))
     <p>{{ $message }}</p>
 @else
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-                <th>Name</th>
-                <th>Amount</th>
-                <th>Price</th>
-                <th>Seller Name</th>
-                <th>Note</th>
-                <th>Receipt</th>
-                <th>Type</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($data as $transaction)
-                <tr>
-                    <td>{{ $transaction->id }}</td>
-                    <td>{{ $transaction->createdAt }}</td>
-                    <td>{{ $transaction->updatedAt }}</td>
-                    <td>{{ $transaction->name }}</td>
-                    <td>{{ $transaction->amount }}</td>
-                    <td>{{ $transaction->price }}</td>
-                    <td>{{ $transaction->seller_name }}</td>
-                    <td>{{ $transaction->note }}</td>
-                    <td>{{ $transaction->receipt }}</td>
-                    <td>{{ $transaction->type }}</td>
+    <div class="d-flex justify-content-center align-items-center">
+        <table border="1">
+            <thead>
+                <tr class="table-header">
+                    <th>ID</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
+                    <th>Name</th>
+                    <th>Recipient</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Type</th>
+                    <th>Note</th>
+                    <th>Link</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach($data as $transaction)
+                    <tr>
+                        <td>{{ $transaction->id }}</td>
+                        <td>{{ $transaction->createdAt }}</td>
+                        <td>{{ $transaction->updatedAt }}</td>
+                        <td>{{ $transaction->nama_transaksi }}</td>
+                        <td>{{ $transaction->pihak_terlibat }}</td>
+                        <td>{{ $transaction->tanggal_transaksi }}</td>
+                        <td>{{ $transaction->jumlah_transaksi }}</td>
+                        <td>{{ $transaction->jenis_transaksi }}</td>
+                        <td>{{ $transaction->catatan }}</td>
+                        <td>{{ $transaction->bukti_transaksi }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 @endif
      <!-- Include Bootstrap JS and other scripts -->
      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

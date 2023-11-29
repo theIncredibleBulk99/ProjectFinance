@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
+    <title>Data Entry</title>
     <link rel="stylesheet" href="{{ URL::asset('css/home.css'); }} ">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
 
     {{-- NAVBAR --}}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <img src="https://seeklogo.com/images/F/finance-logo-6277C6570C-seeklogo.com.png" class="rounded-circle" style="width: 30px; height: 30px; margin-left: 10px;"></a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('home.show') }}">Home</a>
             </li>
