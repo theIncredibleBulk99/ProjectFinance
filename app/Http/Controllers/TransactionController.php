@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\Exceptions\ApiException;
+use Illuminate\Http\Client\RequestException;
 
 class TransactionController extends Controller
 {
@@ -30,12 +33,12 @@ class TransactionController extends Controller
 
     public function getOne(Request $request)
     {
-        $transact = Transaction::where('id_transaksi',$request->id)->get();
+        $transact = Transaction::where('id_transaksi', $request->id)->get();
         return response()->view('detail', ['data' => $transact]);
     }
     public function getAll()
     {
-        $transact = Transaction::select('nama_transaksi', 'tanggal_transaksi', 'jumlah_transaksi', 'jenis_transaksi','id_transaksi')->get();
+        $transact = Transaction::select('nama_transaksi', 'tanggal_transaksi', 'jumlah_transaksi', 'jenis_transaksi', 'id_transaksi')->get();
         return response()->view('showAll', ['data' => $transact]);
     }
 
@@ -68,7 +71,8 @@ class TransactionController extends Controller
         ]);
     }
     //===========================================================================================================================
-    public function postTransactionApi(Request $request){
+    public function postTransactionApi(Request $request)
+    {
         $response = Http::post('https:LINK E NGKO', [
             'nama_transaksi' => $request->nama_transaksi,
             'tanggal_transaksi' => $request->tanggal_transaksi,
@@ -79,39 +83,53 @@ class TransactionController extends Controller
             'catatan' => $request->catatan
         ]);
 
-        $data = $response->json();
+
     }
-    public function inputData(){
-return view('postData.blade.php');
+    public function inputData()
+    {
+        return view('postData.blade.php');
     }
-    public function getAllApi(Request $request){
-        $response = Http::get('link e ngko', [
-            'nama_transaksi'=> $request->nama_transaksi,
-            'tanggal_transaksi'=> $request->tanggal_transaksi,
-            'jumlah_transaksi'=> $request->jumlah_transaksi,
-            'jenis_transaksi'=> $request->jenis_transaksi
+    public function getAllApi(Request $request)
+    {
+        $apiEndpoint = 'https://pemin.aenzt.tech/api/v1/finance/transactions';
+
+        $from = $request->from;
+        $to = $request->to;
+        try {
+            $response = Http::withToken(
+               'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoibGFsYUBnbWFpbC5jb20iLCJpYXQiOjE3MDEyNTAwNTksImV4cCI6MTcwMTI1MDk1OX0.6xBXYwTNKxwRPKUogY5D8sXyzbh2Fdr3gg4IAjqQxrQ',
+            )->get($apiEndpoint, [
+                'from' => $from,
+                'to' => $to,
+            ]);
+            $data = json_decode($response);
+            // if ($response->failed()) {
+            //     throw new ApiException($response->json('message'), $response->status());
+            // }
+            //dd($data);
+            return view('showAll',compact('data'));
+        } catch (ApiException $e) {
+            if ($e->response && $e->response->status() === 401) {
+                // Handle unauthorized access error
+                return response()->json(['error' => 'Unauthorized'], 401);
+            }
+            return view('showAll', ['message'=> $e->getMessage()]);
+        }
+    }
+    public function getMonthlynApi(Request $request)
+    {
+        $response = Http::get('', [
+            'nama_transaksi' => $request->nama_transaksi,
+            'tanggal_transaksi' => $request->tanggal_transaksi,
+            'jumlah_transaksi' => $request->jumlah_transaksi
         ]);
-        return view('showAll',compact('response'));
-    }
-    public function getMonthlynApi(Request $request){
-        $response = Http::get('link e ko', [
-            'nama_transaksi'=> $request->nama_transaksi,
-            'tanggal_transaksi'=> $request->tanggal_transaksi,
-            'jumlah_transaksi'=> $request->jumlah_transaksi
-        ]);
-        return view('showAll',compact('response'));
+        return view('showAll', compact('response'));
     }
 
-    public function getOneApi(Request $request){
-        $response = Http::get('link e ko', [
-            'nama_transaksi'=> $request->nama_transaksi,
-            'tanggal_transaksi'=> $request->tanggal_transaksi,
-            'jumlah_transaksi'=> $request->jumlah_transaksi,
-            'jenis_transaksi'=> $request->jenis_transaksi,
-            'catatan'=> $request->catatan,
-            'bukti'=> $request->bukti_transaksi,
-            'pihak_terlibat' => $request->pihak_terlibat
-        ]);
-        return view('showAll',compact('response'));
+    public function getOneApi(Request $request)
+    {
+        $response = Http::get('https://pemin.aenzt.tech/api/v1/finance/transactions/{id}');
+        $data = $response->json();
+        response()->view('showAll', ['data' => $data]);
     }
 }

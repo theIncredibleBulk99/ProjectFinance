@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\nggejson;
 use ArielMejiaDev\LarapexCharts\Facades\LarapexChart;
 use Illuminate\Support\Facades\Route;
 
@@ -41,10 +42,12 @@ Route::middleware(['web'])->group(function () {
     Route::get('/getOne/{id}', [TransactionController::class, 'getOne'])->name('getOne');
     Route::get('/getLast7days', [TransactionController::class, 'getLast7Days'])->name('getLast7Days');
     Route::get('/getMonthly/{jenis}/{bulan}', [TransactionController::class, 'getMonthly'])->name('getMonthly');
-    Route::get('/getAll', [TransactionController::class, 'getAll'])->name('getAll');
+    Route::get('/getAll/{from}/{to}', [TransactionController::class, 'getAllApi'])->name('getAll');
     Route::get('/postData', function () {
         return view('postData');
     })->name('postData');
+
+    Route::get('/data-json', [nggejson::class, 'getData']);
 });
 
 
