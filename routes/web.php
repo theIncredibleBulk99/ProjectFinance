@@ -1,12 +1,7 @@
 <?php
 
 use App\Http\Controllers\TransactionController;
-<<<<<<< HEAD
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\HistoryController;
-=======
 use App\Http\Controllers\nggejson;
->>>>>>> 6eab8e6556851cc58fc91e190946323014053edb
 use ArielMejiaDev\LarapexCharts\Facades\LarapexChart;
 use Illuminate\Support\Facades\Route;
 
