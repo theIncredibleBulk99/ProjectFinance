@@ -7,6 +7,7 @@ p {
     font-weight: 600;
     margin-left: 100px;
     padding-top: 30px;
+    margin-bottom: 100px;
     font-size: 20px;
 }
 .navbar-nav li{
@@ -18,11 +19,87 @@ p {
     margin-top: 3px;
 }
 
+label {
+    font-family: 'Montserrat';
+    font-weight: 300;
+    font-size: 15px;
+    color: black;
+}
 a {
     color: white;
     font-family: 'Montserrat';
     font-weight: 300;
     font-size: 15px;
+}
+
+#catatan {
+    height: 100px;
+    width: 920px;
+}
+
+.label-input {
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.row-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.vertical-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 150px;
+}
+
+.vertical-form label {
+    margin-bottom: 5px;
+}
+
+.vertical-form input,
+.vertical-form select,
+.vertical-form textarea {
+    margin-bottom: 10px;
+}
+
+.vertical-form button {
+    margin-top: 10px;
+}
+
+.input-bar {
+    height: 48px;
+    width: 430px;
+    border-radius: 6px;
+}
+
+.input-bar option {
+    color: #959595; 
+    font-family: 'Montserrat';
+    font-weight: 300;
+    font-size: 15px;
+}
+
+#jenis-transaksi {
+    color: #959595; 
+    font-family: 'Montserrat';
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.form-submit {
+    background-color: #6FFC2D;
+    border-radius: 6px;
+    height: 48px;
+    width: 920px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    border-style: none;
 }
 /* .graph-display {
 
