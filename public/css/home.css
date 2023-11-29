@@ -15,6 +15,10 @@ p {
     padding-right: 10px;
 }
 
+.navbar {
+    background-color: #102218;
+}
+
 .rounded-circle {
     margin-top: 3px;
 }
@@ -30,6 +34,14 @@ a {
     font-family: 'Montserrat';
     font-weight: 300;
     font-size: 15px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+.container table {
+    width: 90%;
 }
 
 #catatan {
@@ -100,7 +112,41 @@ a {
     font-family: 'Montserrat';
     font-weight: 600;
     border-style: none;
+    transition-duration: 0.3s;
 }
-/* .graph-display {
 
-} */
+.form-submit:hover {
+    background-color: #6FFC2D;
+    border-radius: 6px;
+    height: 70px;
+    width: 1000px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    border-style: none;
+}
+
+table {
+    width: 90%;
+}
+.table-header  {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.table-header th  {
+    border-style: none;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.transactions {
+    width: 90%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.summary-table {
+    width: 100%;
+    margin-left: 100px;
+}

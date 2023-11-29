@@ -10,8 +10,11 @@
 </head>
 <body>
     {{-- NAVBAR --}}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <img src="https://seeklogo.com/images/F/finance-logo-6277C6570C-seeklogo.com.png" class="rounded-circle" style="width: 30px; height: 30px; margin-left: 10px;"></a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('home.show') }}">Home</a>
             </li>
@@ -47,15 +50,16 @@
         </div>
     </div>
 
-    <div class="container mt-5">
-        <h2>Transaction List</h2>
-        <table class="table table-bordered">
+    <div class="transactions" >
+        <p>Transaction List</p>
+        <table border="1" class="summary-table">
             <thead>
-                <tr>
-                    <th>nama_transaksi</th>
-                    <th>tanggal_transaksi</th>
-                    <th>jumlah_transaksi</th>
-                    <th>jenis_transaksi</th>
+                <tr class="table-header d-flex flex-row justify-content-between">
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Type</th>
+                    <th>Details</th>
                 </tr>
             </thead>
             <tbody>
