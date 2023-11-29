@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-
+    {{-- NAVBAR --}}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
@@ -19,7 +19,7 @@
                 <a class="nav-link" href="{{ route('postData') }}">Input</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">Analytics</a>
+                <a class="nav-link" href="{{ route('analytics.show') }}">Analytics</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('history.show') }}">History</a>
@@ -35,6 +35,7 @@
             </li>
         </ul>
     </nav>
+    {{-- NAVBAR --}}
 
     <p>Hello, Rangga Andhito Damahindra</p>
 

@@ -20,7 +20,7 @@
                 <a class="nav-link" href="{{ route('postData') }}">Input</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">Analytics</a>
+                <a class="nav-link" href="{{ route('analytics.show') }}">Analytics</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('history.show') }}">History</a>
