@@ -47,4 +47,6 @@ Route::middleware(['web'])->group(function () {
     })->name('postData');
 });
 
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
 
