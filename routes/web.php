@@ -8,12 +8,6 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\AnalyticsController;
-<<<<<<< HEAD
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\LoginController;
-=======
-
->>>>>>> bca9d65b456518442b987dcc89de4a4f8eaa1d14
 use App\Http\Controllers\nggejson;
 use ArielMejiaDev\LarapexCharts\Facades\LarapexChart;
 use Illuminate\Support\Facades\Route;
