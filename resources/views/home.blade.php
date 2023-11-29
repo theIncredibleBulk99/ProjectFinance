@@ -42,6 +42,23 @@
 
     <p>Hello, Rangga Andhito Damahindra</p>
 
+        <div class="d-flex flex-row justify-content-between">
+            <div class="d-flex flex-column justify-content-start align-items-start">
+                <p class="header">Total Balance</p>
+                <p class="values p-1">Rp5.000.000,00</p>
+            </div>
+            <div class="d-flex flex-row justify-content-end">
+                <div class="d-flex flex-column justify-content-end align-items-end">
+                    <p class="header">Bank</p>
+                    <p id="bank" class="values p-1">Bank Mandiri</p>
+                </div>
+                <div class="d-flex flex-column justify-content-end align-items-end">
+                    <p class="header">Account Number</p>
+                    <p class="values p-1">0858773090</p>
+                </div>
+            </div>
+        </div><br><br>
+
     <div class="container-fluid">
         <div class="d-flex justify-content-center align-items-center">
             <div class="graph p-6 bg-white rounded shadow" style="max-width: 1915px; width: 100%;">

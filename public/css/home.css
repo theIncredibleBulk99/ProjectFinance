@@ -7,9 +7,24 @@ p {
     font-weight: 600;
     margin-left: 100px;
     padding-top: 30px;
-    margin-bottom: 100px;
+    margin-bottom: 10px;
     font-size: 20px;
 }
+
+.header {
+    margin-right: 100px;
+    font-family: 'Montserrat';
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.values {
+    margin-right: 100px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 20px;
+}
+
 .navbar-nav li{
     padding-left: 10px;
     padding-right: 10px;
