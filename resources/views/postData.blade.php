@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Your view content goes here -->
-    <form action="{{ route('postTransaction') }}" method="post">
+    <form action="{{ route('postTransactionApi') }}" method="post">
         @csrf
 
         <label for="nama_transaksi">Nama Transaksi:</label>
