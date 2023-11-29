@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
-    <link rel="stylesheet" href="{{ URL::asset('css/home.css'); }} ">
+    <link rel="stylesheet" href="{{ URL::asset('css/home.css') }} ">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
@@ -25,7 +25,7 @@
                 <a class="nav-link" href="{{ route('history.show') }}">History</a>
             </li>
         </ul>
-    
+
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link" href="#">Settings</a>
@@ -39,9 +39,9 @@
 
     <p>Transaction History</p>
 
-@if(isset($message))
-    <p>{{ $message }}</p>
-@else
+ {{-- @if(isset($data['message']))
+        <p>{{ $data['message'] }}</p>
+@else --}}
     <table border="1">
         <thead>
             <tr>
@@ -52,22 +52,22 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($data as $transaction)
+            @foreach($data['data'] as $transaction)
                 <tr>
 
-                    <td>{{ $transaction->createdAt }}</td>
+                    <td>{{ $transaction['createdAt'] }}</td>
 
-                    <td>{{ $transaction->name }}</td>
+                    <td>{{ $transaction['name']}}</td>
 
-                    <td>{{ $transaction->price }}</td>
+                    <td>{{ $transaction['price'] }}</td>
 
-                   
-                    <td>{{ $transaction->type }}</td>
+
+                    <td>{{ $transaction['type'] }}</td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-@endif
+{{-- @endif --}}
      <!-- Include Bootstrap JS and other scripts -->
      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

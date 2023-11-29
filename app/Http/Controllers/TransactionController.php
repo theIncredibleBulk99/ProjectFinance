@@ -105,12 +105,12 @@ class TransactionController extends Controller
                         'from' => $from,
                         'to' => $to,
                     ]);
-            $data = json_decode($response);
-            // if ($response->failed()) {
-            //     throw new ApiException($response->json('message'), $response->status());
-            // }
-            //dd($data);
-            return view('showAll', compact('data'));
+                    $data = json_decode($response,true);
+                    // if ($response->failed()) {
+                    //     throw new ApiException($response->json('message'), $response->status());
+                    // }
+                  //d($data);
+                    return view('showAll',compact('data'));
         } catch (ApiException $e) {
 
             return response()->json(['error' => $e->getMessage()], 500);

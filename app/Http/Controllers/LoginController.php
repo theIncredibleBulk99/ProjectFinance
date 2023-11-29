@@ -24,8 +24,9 @@ class LoginController extends Controller
             if (isset($responseData['data'])) {
                 $access_token = $responseData['data']['access_token'];
                 Session::put('access_token', $access_token);
-
+                //dd($response);
                 // Redirect to a success page or perform other actions
+                return response()->redirectToRoute('getAll',['from'=> '2023-4-5','to'=>'2024-1-4']);
             } else {
                 // Handle the case where 'data' key is not present
                 // return response()->json('error',$response->getMessage());
