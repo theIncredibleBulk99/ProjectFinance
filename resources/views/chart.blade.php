@@ -76,7 +76,7 @@
 
     {{ $donut_chart->script() }}
 
-    <script src="{{ $chart->cdn() }}"></script>
+    <script src="{{ $bar_chart->cdn() }}"></script>
 
     {{ $bar_chart->script() }}
 
