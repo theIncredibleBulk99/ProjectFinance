@@ -28,7 +28,7 @@
                 <a class="nav-link" href="{{ route('history.show') }}">History</a>
             </li>
         </ul>
-    
+
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link" href="#">Settings</a>
@@ -42,44 +42,35 @@
 
     <p>Transaction History</p>
 
-@if(isset($message))
-    <p>{{ $message }}</p>
-@else
-    <div class="d-flex justify-content-center align-items-center">
-        <table border="1">
-            <thead>
-                <tr class="table-header">
-                    <th>ID</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
-                    <th>Name</th>
-                    <th>Recipient</th>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>Type</th>
-                    <th>Note</th>
-                    <th>Link</th>
+ {{-- @if(isset($data['message']))
+        <p>{{ $data['message'] }}</p>
+@else --}}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Created At</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($data['data'] as $transaction)
+                <tr>
+
+                    <td>{{ $transaction['createdAt'] }}</td>
+
+                    <td>{{ $transaction['name']}}</td>
+
+                    <td>{{ $transaction['price'] }}</td>
+
+
+                    <td>{{ $transaction['type'] }}</td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach($data as $transaction)
-                    <tr>
-                        <td>{{ $transaction->id }}</td>
-                        <td>{{ $transaction->createdAt }}</td>
-                        <td>{{ $transaction->updatedAt }}</td>
-                        <td>{{ $transaction->nama_transaksi }}</td>
-                        <td>{{ $transaction->pihak_terlibat }}</td>
-                        <td>{{ $transaction->tanggal_transaksi }}</td>
-                        <td>{{ $transaction->jumlah_transaksi }}</td>
-                        <td>{{ $transaction->jenis_transaksi }}</td>
-                        <td>{{ $transaction->catatan }}</td>
-                        <td>{{ $transaction->bukti_transaksi }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-@endif
+            @endforeach
+        </tbody>
+    </table>
+{{-- @endif --}}
      <!-- Include Bootstrap JS and other scripts -->
      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

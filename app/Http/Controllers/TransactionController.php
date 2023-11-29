@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Exceptions\ApiException;
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Support\Facades\Session;
+
 
 class TransactionController extends Controller
 {
@@ -82,7 +84,7 @@ class TransactionController extends Controller
             'pihak_terlibat' => $request->pihak_terlibat,
             'catatan' => $request->catatan
         ]);
-
+        return response()->redirectToRoute('getAll/2023-11-1/2024-2-1');
 
     }
     public function inputData()
@@ -92,28 +94,26 @@ class TransactionController extends Controller
     public function getAllApi(Request $request)
     {
         $apiEndpoint = 'https://pemin.aenzt.tech/api/v1/finance/transactions';
+       $token=Session::get('access_token');
 
         $from = $request->from;
         $to = $request->to;
         try {
             $response = Http::withToken(
-               'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoibGFsYUBnbWFpbC5jb20iLCJpYXQiOjE3MDEyNTAwNTksImV4cCI6MTcwMTI1MDk1OX0.6xBXYwTNKxwRPKUogY5D8sXyzbh2Fdr3gg4IAjqQxrQ',
+                $token
             )->get($apiEndpoint, [
-                'from' => $from,
-                'to' => $to,
-            ]);
-            $data = json_decode($response);
-            // if ($response->failed()) {
-            //     throw new ApiException($response->json('message'), $response->status());
-            // }
-            //dd($data);
-            return view('showAll',compact('data'));
+                        'from' => $from,
+                        'to' => $to,
+                    ]);
+                    $data = json_decode($response,true);
+                    // if ($response->failed()) {
+                    //     throw new ApiException($response->json('message'), $response->status());
+                    // }
+                  //d($data);
+                    return view('showAll',compact('data'));
         } catch (ApiException $e) {
-            if ($e->response && $e->response->status() === 401) {
-                // Handle unauthorized access error
-                return response()->json(['error' => 'Unauthorized'], 401);
-            }
-            return view('showAll', ['message'=> $e->getMessage()]);
+
+            return response()->json(['error' => $e->getMessage()], 500);
         }
     }
     public function getMonthlynApi(Request $request)
@@ -126,10 +126,18 @@ class TransactionController extends Controller
         return view('showAll', compact('response'));
     }
 
+
     public function getOneApi(Request $request)
     {
-        $response = Http::get('https://pemin.aenzt.tech/api/v1/finance/transactions/{id}');
-        $data = $response->json();
-        response()->view('showAll', ['data' => $data]);
+        $token=Session::get('access_token');
+
+        $id = (String) $request->id;
+        $response = Http::withToken(
+            $token
+        )->get('https://pemin.aenzt.tech/api/v1/finance/transactions/', $id);
+
+        $data = json_decode($response);
+        dd($data);
+        response()->view('detail', compact('data'));
     }
 }
