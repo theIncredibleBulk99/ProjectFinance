@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HistoryController;
 use ArielMejiaDev\LarapexCharts\Facades\LarapexChart;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', function () {
-    return view('home');
-});
+Route::get('/home', [HomeController::class, 'index'])->name('home.show');
+Route::get('/history', [HistoryController::class, 'index'])->name('history.show');
 
 Route::get('chart', function () {
     $chart = (new LarapexChart)::setType('line')
