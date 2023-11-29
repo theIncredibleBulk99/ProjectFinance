@@ -1,8 +1,12 @@
 <?php
 
 use App\Http\Controllers\TransactionController;
+<<<<<<< HEAD
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HistoryController;
+=======
+use App\Http\Controllers\nggejson;
+>>>>>>> 6eab8e6556851cc58fc91e190946323014053edb
 use ArielMejiaDev\LarapexCharts\Facades\LarapexChart;
 use Illuminate\Support\Facades\Route;
 
@@ -42,10 +46,18 @@ Route::middleware(['web'])->group(function () {
     Route::get('/getOne/{id}', [TransactionController::class, 'getOne'])->name('getOne');
     Route::get('/getLast7days', [TransactionController::class, 'getLast7Days'])->name('getLast7Days');
     Route::get('/getMonthly/{jenis}/{bulan}', [TransactionController::class, 'getMonthly'])->name('getMonthly');
-    Route::get('/getAll', [TransactionController::class, 'getAll'])->name('getAll');
+    Route::get('/getAll/{from}/{to}', [TransactionController::class, 'getAllApi'])->name('getAll');
     Route::get('/postData', function () {
         return view('postData');
     })->name('postData');
+
+    Route::get('/data-json', [nggejson::class, 'getData']);
 });
 
+//register
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
 
+//login
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
