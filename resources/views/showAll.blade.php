@@ -45,34 +45,36 @@
  {{-- @if(isset($data['message']))
         <p>{{ $data['message'] }}</p>
 @else --}}
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Created At</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Type</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($data['data'] as $transaction)
+    <div class="d-flex felx-column justify-content-center align-items-center container-fluid">
+        <table border="1">
+            <thead>
                 <tr>
-
-                    <td>{{ $transaction['createdAt'] }}</td>
-
-                    <td>{{ $transaction['name']}}</td>
-
-                    <td>{{ $transaction['price'] }}</td>
-
-
-                    <td>{{ $transaction['type'] }}</td>
-                    <td>
-                        <a href="{{ route('getOne', ['id' => $transaction['id']]) }}" class="btn btn-primary">Get Details</a>
-                    </td>
+                    <th>Created At</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Type</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach($data['data'] as $transaction)
+                    <tr>
+    
+                        <td>{{ $transaction['createdAt'] }}</td>
+    
+                        <td>{{ $transaction['name']}}</td>
+    
+                        <td>{{ $transaction['price'] }}</td>
+    
+    
+                        <td>{{ $transaction['type'] }}</td>
+                        <td>
+                            <a href="{{ route('getOne', ['id' => $transaction['id']]) }}" class="btn btn-primary">Get Details</a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 {{-- @endif --}}
      <!-- Include Bootstrap JS and other scripts -->
      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

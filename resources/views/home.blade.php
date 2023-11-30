@@ -25,7 +25,7 @@
                 <a class="nav-link" href="{{ route('analytics.show') }}">Analytics</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('getAll') }}">History</a>
+                <a class="nav-link" href="{{ route('getAll', ['from'=> '2023-4-5','to'=>date('Y-m-d')]) }}">History</a>
             </li>
         </ul>
 

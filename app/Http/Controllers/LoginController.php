@@ -26,7 +26,7 @@ class LoginController extends Controller
                 Session::put('access_token', $access_token);
                 //dd($response);
                 // Redirect to a success page or perform other actions
-                return response()->redirectToRoute('getAll',['from'=> '2023-4-5','to'=>'2024-1-4']);
+                return response()->redirectToRoute('home.show',['from'=> '2023-4-5','to'=>date('Y-m-d')]);
             } else {
                 // Handle the case where 'data' key is not present
                 // return response()->json('error',$response->getMessage());
