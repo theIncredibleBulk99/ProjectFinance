@@ -66,6 +66,9 @@
 
 
                     <td>{{ $transaction['type'] }}</td>
+                    <td>
+                        <a href="{{ route('getOne', ['id' => $transaction['id']]) }}" class="btn btn-primary">Get Details</a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

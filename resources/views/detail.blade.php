@@ -15,46 +15,42 @@
     <table class="table table-bordered">
 
         <tbody>
-            @foreach ($data as $product)
-            <tr>
-                <td>
-                    <th>ID_transaksi</th>
-                    </td>
-                <td>{{ $product->id_transaksi }}</td>
-            <tr>
+
                 <tr>
-                    <td>
-                        <th>nama_transaksi</th>
-                        </td>
-                    <td>{{ $product->nama_transaksi }}</td>
-                <tr>
-                    <td>
-                        <th>tanggal_transaksi</th>
-                        </td>
-                    <td>{{ $product->tanggal_transaksi }}</td>
+                    <td><h4>Tanggal Transaksi</h4></td>
+                    <td>{{ $data['data']['createdAt'] }}</td>
                 </tr>
                 <tr>
-                   <td><th>jumlah_transaksi</th></td>
-                    <td>{{ $product->jumlah_transaksi }}</td>
+                    <td><h4>Nama Transaksi</h4></td>
+                    <td>{{ $data['data']['name'] }}</td>
                 </tr>
                 <tr>
-                    <td><th>jenis_transaksi</th></td>
-                    <td>{{ $product->jenis_transaksi }}</td>
+                    <td><h4>Pihak terlibat</h4></td>
+                    <td>{{ $data['data']['seller_name'] }}</td>
+                </tr>
+
+                <tr>
+                    <td><h4>Jenis Transaksi</h4></td>
+                    <td>{{ $data['data']['type'] }}</td>
                 </tr>
                 <tr>
-                    <td><th>catatan</th></td>
-                    <td>{{ $product->catatan }}</td>
+                    <td><h4>Jumlah barang</h4></td>
+                    <td>{{ $data['data']['amount'] }}</td>
                 </tr>
                 <tr>
-                    <td><th>bukti_transaksi</th></td>
-                    <td>{{ $product->bukti_transaksi }}</td>
+                    <td><h4>Total</h4></td>
+                    <td>{{ $data['data']['price'] }}</td>
                 </tr>
                 <tr>
-                    <td><th>pihak_terlibat</th></td>
-                    <td>{{ $product->pihak_terlibat }}</td>
+                    <td><h4>Catatan</h4></td>
+                    <td>{{ $data['data']['note'] }}</td>
                 </tr>
+                <tr>
+                    <td><h4>Bukti</h4></td>
+                    <td>{{ $data['data']['receipt'] }}</td>
                 </tr>
-            @endforeach
+
+
         </tbody>
     </table>
 

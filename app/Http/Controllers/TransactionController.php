@@ -135,10 +135,13 @@ class TransactionController extends Controller
         $id = (String) $request->id;
         $response = Http::withToken(
             $token
-        )->get('https://pemin.aenzt.tech/api/v1/finance/transactions/', $id);
+        )->get('https://pemin.aenzt.tech/api/v1/finance/transactions/'. $id);
+        $data = json_decode($response,true);
+        // if ($response->failed()) {
+        //     throw new ApiException($response->json('message'), $response->status());
+        // }
+    // dd($data);
 
-        $data = json_decode($response);
-        dd($data);
-        response()->view('detail', compact('data'));
+        return view('detail',compact('data'));
     }
 }
