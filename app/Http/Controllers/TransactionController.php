@@ -75,16 +75,17 @@ class TransactionController extends Controller
     //===========================================================================================================================
     public function postTransactionApi(Request $request)
     {
-        $response = Http::post('https:LINK E NGKO', [
-            'nama_transaksi' => $request->nama_transaksi,
-            'tanggal_transaksi' => $request->tanggal_transaksi,
-            'jumlah_transaksi' => $request->jumlah_transaksi,
-            'jenis_transaksi' => $request->jenis_transaksi,
-            'bukti_transaksi' => $request->bukti_transaksi,
-            'pihak_terlibat' => $request->pihak_terlibat,
-            'catatan' => $request->catatan
+        $request->validate([
+            'amount' => 'numeric|required',
         ]);
-        return response()->redirectToRoute('getAll/2023-11-1/2024-2-1');
+        $token=Session::get('access_token');
+        $data = $request->all();
+        $jsondata=json_encode($data,JSON_NUMERIC_CHECK);
+        $response = Http::withToken($token)->withBody($jsondata)->post('https://pemin.aenzt.tech/api/v1/finance/transactions'
+        );
+        $responseData = $response->json();
+        // dd($jsondata);
+        return response()->redirectToRoute('getAll',['from'=> '2023-4-5','to'=>'2024-1-4']);
 
     }
     public function inputData()

@@ -32,7 +32,7 @@ Route::get('/history', [HistoryController::class, 'index'])->name('history.show'
 Route::get('/analytics', [AnalyticsController::class, 'index'])->name('analytics.show');
 
 Route::middleware(['web'])->group(function () {
-    Route::post('/postTransaction', [TransactionController::class, 'createTransaction'])->name('postTransaction');
+    Route::post('/postTransaction', [TransactionController::class, 'postTransactionApi'])->name('postTransaction');
     Route::get('/getOne/{id}', [TransactionController::class, 'getOneApi'])->name('getOne');
     Route::get('/getLast7days', [TransactionController::class, 'getLast7Days'])->name('getLast7Days');
     Route::get('/getMonthly/{jenis}/{bulan}', [TransactionController::class, 'getMonthly'])->name('getMonthly');
@@ -50,7 +50,7 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 });
 
 //register
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/register', [RegisterController::class, 'showRegistrationForm']);
+Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
 //login
