@@ -8,9 +8,6 @@ use Illuminate\Http\Request;
 class HistoryController extends Controller
 {
     public function index() {
-        $transactions = Transaction::all();
-        return view('showAll', [
-            'data' => $transactions
-        ]);
-    }
+        return response()->redirectToRoute('getAll',['from'=> '2023-4-5','to'=>'2024-1-4']);
+}
 }

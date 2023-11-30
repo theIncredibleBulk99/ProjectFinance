@@ -49,7 +49,7 @@ Route::get('chart', function () {
 });
 
 Route::middleware(['web'])->group(function () {
-    Route::post('/postTransaction', [TransactionController::class, 'createTransaction'])->name('postTransaction');
+    Route::post('/postTransaction', [TransactionController::class, 'postTransactionApi'])->name('postTransaction');
     Route::get('/getOne/{id}', [TransactionController::class, 'getOneApi'])->name('getOne');
     Route::get('/getLast7days', [TransactionController::class, 'getLast7Days'])->name('getLast7Days');
     Route::get('/getMonthly/{jenis}/{bulan}', [TransactionController::class, 'getMonthly'])->name('getMonthly');
@@ -61,15 +61,15 @@ Route::middleware(['web'])->group(function () {
     Route::get('/data-json', [nggejson::class, 'getData']);
     Route::get('/login', function(){
         return view('login');
-    });
+    })->name('loginPage');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 });
 
 //register
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [RegisterController::class, 'register'])->name('login');
+Route::get('/register', function(){
+    return view('register');
+})->name('registerPage');
+Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
-//login
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login'])->name('home');
+

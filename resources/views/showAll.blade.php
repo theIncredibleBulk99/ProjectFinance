@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Transaction History</title>
-    <link rel="stylesheet" href="{{ URL::asset('css/home.css'); }} ">
+    <link rel="stylesheet" href="{{ URL::asset('css/home.css') }} ">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
@@ -66,6 +66,9 @@
 
 
                     <td>{{ $transaction['type'] }}</td>
+                    <td>
+                        <a href="{{ route('getOne', ['id' => $transaction['id']]) }}" class="btn btn-primary">Get Details</a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
