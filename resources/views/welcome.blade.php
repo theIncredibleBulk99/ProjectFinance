@@ -12,17 +12,17 @@
         <div style="margin: 180px">
             <p>FinanceDiv</p>
             <h1>Monitor The<br>Company's Finances<br><span style="color : #6FFC2D;">Easily</span></h1>
-        
+
             <div class="forms">
-                <form action="{{ route('register') }}" method="GET">
+                <form action="{{ route('registerPage') }}" method="GET">
                     <button class="form-button register">Sign up</button>
                 </form>
-                <form action="{{ route('login') }}" method="GET">
+                <form action="{{ route('loginPage') }}" method="GET">
                     <button class="form-button login">Sign in</button>
                 </form>
             </div>
         </div>
-    
+
         <img src="{{URL::asset('css/Assets/illustration.svg')}}" alt="" style="margin: 180px; width:500px;">
     </div>
 </body>

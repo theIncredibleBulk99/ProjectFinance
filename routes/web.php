@@ -44,15 +44,15 @@ Route::middleware(['web'])->group(function () {
     Route::get('/data-json', [nggejson::class, 'getData']);
     Route::get('/login', function(){
         return view('login');
-    });
+    })->name('loginPage');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 });
 
 //register
-Route::get('/register', [RegisterController::class, 'showRegistrationForm']);
+Route::get('/register', function(){
+    return view('register');
+})->name('registerPage');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
-//login
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login'])->name('home');
+
